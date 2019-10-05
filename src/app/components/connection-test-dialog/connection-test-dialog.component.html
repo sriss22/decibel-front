@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Connection Test Results for Conn {{ data.id }}</h1>
+<div mat-dialog-content>
+    <p>
+        Status: <span *ngIf="data.success">
+                    <mat-icon aria-hidden="false" aria-label="Status">done</mat-icon>
+                </span>        
+                <span *ngIf="!data.success">
+                    <mat-icon aria-hidden="false" aria-label="Status">error_outline</mat-icon>
+                </span>
+    </p>
+    <p>
+        Message: {{ data.message }}
+    </p>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close] cdkFocusInitial>OK</button>
+</div>
