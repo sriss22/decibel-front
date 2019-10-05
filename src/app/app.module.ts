@@ -7,8 +7,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ConnectionComponent } from './components/connection/connection.component';
 import { HeaderInterceptor } from './interceptors/header-interceptor.interceptor'; 
-import { MaterialModule } from './modules/material.module';
+import { MaterialModule } from './modules/material/material.module';
 import { ConnectionTestDialogComponent } from './components/connection-test-dialog/connection-test-dialog.component';
+import { ConnectionsModule } from './modules/connections/connections.module';
 
 const appRoutes: Routes = [
   { path: 'connections', component: ConnectionComponent },
@@ -17,9 +18,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ConnectionComponent,
-    ConnectionTestDialogComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +27,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
+    ConnectionsModule,
     MaterialModule
   ],
   providers: [

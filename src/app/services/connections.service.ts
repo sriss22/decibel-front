@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Connection, DbAudit, toConnection, toDbAudit, Response } from '../models';
+import { Connection, toConnection, Response } from '../models';
 import { HttpClient } from '@angular/common/http';
+import { ConnectionStats, toConnectionStats } from '../models/connection-stats.model';
 
 @Injectable({ providedIn: 'root' })
 export class ConnectionsService {
@@ -56,7 +57,7 @@ export class ConnectionsService {
         port: number, 
         user: string, 
         pass: string
-    ): Observable<DbAudit[]> {
+    ): Observable<ConnectionStats> {
         const body = {
             host,
             db,
@@ -71,7 +72,7 @@ export class ConnectionsService {
         ).pipe(
             map(response => {
                 if (response.error) throw new Error(response.errorMessage);
-                return response.results.map(toDbAudit);
+                return toConnectionStats({ dbStats: response.results.stat_activity, tableStats: response.results.stat_user_tables });
             }),
             catchError(error => of(error))
         );

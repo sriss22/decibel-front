@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionsService } from 'src/app/services';
-import { Connection, DbAudit } from 'src/app/models';
+import { Connection } from 'src/app/models';
 import { MatDialog } from '@angular/material';
 import { ConnectionTestDialogComponent } from '../connection-test-dialog/connection-test-dialog.component';
+import { ConnectionStats } from 'src/app/models/connection-stats.model';
 
 @Component({
   selector: 'app-connection',
@@ -13,7 +14,7 @@ import { ConnectionTestDialogComponent } from '../connection-test-dialog/connect
 export class ConnectionComponent implements OnInit {
   loading: boolean;
   connections: Connection[] = [];
-  connectionStats: DbAudit[];
+  connectionStats: ConnectionStats;
   lastSelectedConnectionId: number;
   displayedColumns: string[] = ['id', 'host', 'database', 'port', 'username', 'password', 'testConnection', 'showStats'];
 

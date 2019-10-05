@@ -1,0 +1,48 @@
+<mat-card class="mat-elevation-z8">
+    <mat-card-title>Table</mat-card-title>
+    <table mat-table [dataSource]="tableStats">
+        <ng-container matColumnDef="schema_name">
+            <th mat-header-cell *matHeaderCellDef>Schema Name</th>
+            <td mat-cell *matCellDef="let element"> {{ element.schema_name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="table_name">
+            <th mat-header-cell *matHeaderCellDef>Table Name</th>
+            <td mat-cell *matCellDef="let element"> {{ element.table_name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rows_inserted">
+            <th mat-header-cell *matHeaderCellDef># Rows Inserted</th>
+            <td mat-cell *matCellDef="let element"> {{ element.rows_inserted }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rows_updated">
+            <th mat-header-cell *matHeaderCellDef># Rows Updated</th>
+            <td mat-cell *matCellDef="let element"> {{ element.rows_updated }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rows_deleted">
+            <th mat-header-cell *matHeaderCellDef># Rows Deleted</th>
+            <td mat-cell *matCellDef="let element"> {{ element.rows_deleted }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="live_rows">
+            <th mat-header-cell *matHeaderCellDef># Live Rows</th>
+            <td mat-cell *matCellDef="let element"> {{ element.live_rows }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dead_rows">
+            <th mat-header-cell *matHeaderCellDef># Dead Rows</th>
+            <td mat-cell *matCellDef="let element"> {{ element.dead_rows }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rows_since_analyzed">
+            <th mat-header-cell *matHeaderCellDef># Rows Since Analyzed</th>
+            <td mat-cell *matCellDef="let element"> {{ element.rows_since_analyzed }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>
+    
